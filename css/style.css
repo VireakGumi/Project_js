@@ -25,6 +25,52 @@ nav .navbar-left :hover, nav .navbar-right :hover {
   border-bottom: 4px solid #FFCF43;
 }
 
+.footer {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  background-color: #01345B;
+  padding: 10px 5px;
+}
+.footer .footer-left .text {
+  margin-left: 30px;
+}
+.footer .footer-center ul {
+  margin-left: -45px;
+}
+.footer .footer-center ul li {
+  list-style: none;
+  margin: 8px;
+}
+.footer .footer-center ul li a {
+  text-decoration: none;
+  color: white;
+}
+.footer .footer-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer .footer-right img {
+  margin: 10px 5px;
+}
+.footer .footer-right .search {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.footer .footer-right .search input {
+  padding: 7px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.footer .footer-right .search i {
+  color: grey;
+}
+
 body {
   margin: 0;
   padding: 0;
