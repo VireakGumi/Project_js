@@ -88,6 +88,28 @@ button:hover {
   color: grey;
 }
 
+.list-1 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.list-1 .card {
+  background-color: hsl(206deg, 98%, 18%);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+}
+.list-1 .card img {
+  border-radius: 10px;
+}
+.list-1 .card .text-card .sub-text {
+  display: flex;
+  justify-content: space-between;
+}
+.list-1 .card:hover {
+  transform: translate(-10px, -10px);
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -1,0 +1,25 @@
+.list-1{
+    display: flex;
+    justify-content: space-evenly;
+    .card{
+        background-color: hsl(206, 98%, 18%);
+        // height: 300px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+        img{
+            border-radius: 10px;
+        }
+        .text-card{
+            .sub-text{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        &:hover{
+            transform: translate(-10px , -10px);
+
+        }
+    }
+}
