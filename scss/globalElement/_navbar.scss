@@ -1,0 +1,31 @@
+// style nav bar.
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    // margin: 5px 10px;
+    padding-top: 5px;
+    background-color: #01345B;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    .navbar-left , .navbar-right{
+        display: flex;
+        align-items: center;
+        a{
+            margin: 0px 15px;
+            text-decoration: none !important;;
+            color: white;
+            // font-weight: bold;
+
+        }
+        .acitve{
+            border-bottom: 4px solid #FFCF43 ;
+        }
+        :hover{
+            border-bottom: 4px solid #FFCF43 ;
+        }
+
+    }
+}
