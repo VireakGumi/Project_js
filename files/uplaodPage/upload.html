@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-upload">
         <nav>
             <div class="navbar-left">
                 <a href="../../index.html">Home</a>
@@ -24,6 +24,56 @@
                 <a href="upload.html" class="acitve">Upload</a>
             </div>
         </nav>
+        <div class="content-dialog" style="display: none;" >
+            <dialog open>
+                <header>Add your product</header>
+        
+                <div class="data">
+                    <section>
+                        <label>Brand model: </label>
+                        <input id="title" type="text" />
+                        <label>Price: </label>
+                        <input id="price" type="text"/>
+                        <label>Availablity: </label>
+                        <input id="availablity" type="text"/>
+                        <label>Screen size: </label>
+                        <input id="Screen" type="text"/>
+                      </section>
+                      <section>
+                        <label>CPU: </label>
+                        <input id="cpu" type="text" />
+                        <label>RAM: </label>
+                        <input id="ram" type="text"/>
+                        <label>Storage: </label>
+                        <input id="storage" type="text"/>
+                        <label>Color: </label>
+                        <select name="" id="color">
+                          <option value="">Red</option>
+                          <option value="">Blue</option>
+                          <option value="">White</option>
+                          <option value="">Silver</option>
+                          <option value="">Green</option>
+                          <option value="">Black</option>
+                        </select>
+                      </section>
+                      <section>
+                        <label>Description: </label>
+                        <textarea name="" id="description" cols="30" rows="10"></textarea>
+                      </section>
+                </div>
+                
+                
+                <menu>
+
+                  <button>Cancel</button>
+        
+                  <button>Create</button>
+        
+                  <button>Edit</button>
+        
+                </menu>
+              </dialog>
+        </div>
         <div class="contain">
             <div class="head">
                 <h2>All product</h2>
@@ -37,6 +87,13 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Edit or Delete</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>ASUS</td>
+                        <td>$600</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, tenetur!</td>
+                        <td>########## & #########</td>
                     </tr>
             </table>
         </div>
