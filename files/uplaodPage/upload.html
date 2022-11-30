@@ -24,52 +24,64 @@
                 <a href="upload.html" class="acitve">Upload</a>
             </div>
         </nav>
-        <div class="content-dialog" style="display: none;" >
+        <div class="content-dialog"  style="display: none;">
             <dialog open>
                 <header>Add your product</header>
         
-                <div class="data">
-                    <section>
-                        <label>Brand model: </label>
-                        <input id="title" type="text" />
-                        <label>Price: </label>
-                        <input id="price" type="text"/>
-                        <label>Availablity: </label>
-                        <input id="availablity" type="text"/>
-                        <label>Screen size: </label>
-                        <input id="Screen" type="text"/>
-                      </section>
-                      <section>
-                        <label>CPU: </label>
-                        <input id="cpu" type="text" />
-                        <label>RAM: </label>
-                        <input id="ram" type="text"/>
-                        <label>Storage: </label>
-                        <input id="storage" type="text"/>
-                        <label>Color: </label>
-                        <select name="" id="color">
-                          <option value="">Red</option>
-                          <option value="">Blue</option>
-                          <option value="">White</option>
-                          <option value="">Silver</option>
-                          <option value="">Green</option>
-                          <option value="">Black</option>
-                        </select>
-                      </section>
-                      <section>
-                        <label>Description: </label>
-                        <textarea name="" id="description" cols="30" rows="10"></textarea>
-                      </section>
-                </div>
+                <form action="">
+                    <div class="data">
+                        <section>
+                            <label>Brand model: </label>
+                            <input id="title" type="text" />
+                            <label>Price: </label>
+                            <input id="price" type="text"/>
+                            <label>Availablity: </label>
+                            <input id="availablity" type="text"/>
+                            <label>Screen size: </label>
+                            <input id="screen" type="text"/>
+                          </section>
+                          <section>
+                            <label>CPU: </label>
+                            <input id="cpu" type="text" />
+                            <label>RAM: </label>
+                            <input id="ram" type="text"/>
+                            <label>Storage: </label>
+                            <input id="storage" type="text"/>
+                            <label>Color: </label>
+                            <select name="" id="color">
+                              <option value="">Red</option>
+                              <option value="">Blue</option>
+                              <option value="">White</option>
+                              <option value="">Silver</option>
+                              <option value="">Green</option>
+                              <option value="">Black</option>
+                            </select>
+                          </section>
+                          <section>
+                            <label>Description: </label>
+                            <textarea name="" id="description" cols="30" rows="10"></textarea>
+                          </section>
+    
+                    </div>
+                    <div class="img">
+                        <label for="inputImg" id="image">
+                            Select Image <br/>
+                            <i class="material-icons">add_a_photo</i>
+                            <input id="inputImg" type="file"/>
+                            <br/>
+                            <span id="imageName"></span>
+                        </label>
+                    </div>
+                </form>
                 
                 
                 <menu>
 
                   <button>Cancel</button>
         
-                  <button>Create</button>
+                  <button onclick="onCreate()">Create</button>
         
-                  <button>Edit</button>
+                  <button onclick="onEdit()" style="display: none;">Edit</button>
         
                 </menu>
               </dialog>
@@ -77,7 +89,7 @@
         <div class="contain">
             <div class="head">
                 <h2>All product</h2>
-                <button>Upload product</button>
+                <button onclick="onUpload()">Upload product</button>
             </div>
             <table>
                 <thead>
@@ -88,13 +100,9 @@
                         <th>Description</th>
                         <th>Edit or Delete</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>ASUS</td>
-                        <td>$600</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, tenetur!</td>
-                        <td>########## & #########</td>
-                    </tr>
+                </thead>
+                <tbody></tbody>
+
             </table>
         </div>
 
@@ -132,5 +140,6 @@
         </div>
     </div>
 </body>
+<script src="js/mainUplaod.js"></script>
 
 </html>

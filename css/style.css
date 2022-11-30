@@ -241,6 +241,11 @@ body {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
+  padding: 0px 35px;
+}
+.container-upload .contain table img {
+  width: 25px;
+  margin: 0px 5px;
 }
 .container-upload .content-dialog {
   position: fixed;
@@ -267,37 +272,57 @@ body {
   font-weight: bold;
   font-size: 25px;
 }
-.container-upload .content-dialog input {
+.container-upload .content-dialog form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-upload .content-dialog form input {
   padding: 7px;
   width: 100%;
   border-radius: 5px;
   width: 80%;
 }
-.container-upload .content-dialog .data {
+.container-upload .content-dialog form .data {
   display: flex;
 }
-.container-upload .content-dialog .data section {
+.container-upload .content-dialog form .data section {
   display: flex;
   flex-direction: column;
 }
-.container-upload .content-dialog .data section select {
+.container-upload .content-dialog form .data section select {
   padding: 7px;
   width: 100%;
   border-radius: 5px;
   width: 90%;
   padding: 8px;
 }
-.container-upload .content-dialog .data section textarea {
+.container-upload .content-dialog form .data section textarea {
   width: 545px;
   height: 195px;
   resize: none;
   border-radius: 5px;
 }
+.container-upload .content-dialog form .img {
+  text-align: center;
+  padding: 3%;
+  border: thin solid black;
+  margin-top: 10px;
+  width: 93%;
+  border-radius: 5px;
+}
+.container-upload .content-dialog form .img #image {
+  cursor: pointer;
+}
+.container-upload .content-dialog form .img input[type=file] {
+  display: none;
+}
 .container-upload .content-dialog menu {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-left: -50px;
+  margin-left: -45px;
 }
 .container-upload .content-dialog menu button {
   margin-left: 30px;
