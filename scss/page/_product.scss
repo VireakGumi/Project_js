@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+.pro-container{
+    width: 100%;
+    .header {
+        margin-top: 50px;
+        .slideshow-container {
+            max-width: 60%;
+            position: relative;
+            margin: auto;
+    
+            .mySlides {
+                display: none;
+            }
+    
+            .text {
+                color: #f2f2f2;
+                font-size: 15px;
+                padding: 8px 12px;
+                position: absolute;
+                bottom: 8px;
+                width: 100%;
+                text-align: center;
+            }
+            img{
+                border-radius: 10px;
+            }
+            .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+            }
+        }
+    }
+    .main-image{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        img{
+            position: relative;
+            border-radius: 10px;
+        }
+    }
+    .content-list{
+        display: flex;
+        margin: 30px;
+        aside{
+            background-color: #01345B;
+            border-radius: 10px;
+            color: white;
+            width: 300px;
+            padding: 10px;
+            // text-align: center;
+            h3{
+                text-align: center;
+            }
+            .search{
+                display: flex;
+                align-items: center;
+                width: 80%;
+                background-color: white;
+                border-radius: 10px;
+                margin-left: 10px ;
+                input{
+                    @include input;
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                }
+                i{
+                    color: black;
+                }
+
+                .type , .brand{
+                    li{
+                        list-style: none;
+
+                    }
+                }
+
+            }
+
+
+        }
+        .right-side{
+            display: grid;
+            width: 100%;
+            main{
+                display: flex;
+                width: 100%;
+            }
+            .bottom{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                ul{
+                    display: flex;
+                    li{
+                        list-style: none;
+                        margin: 10px;
+                        font-size: large;
+                        padding: 5px;
+                        &:hover{
+                            cursor: pointer;
+                            // border-bottom: 6px solid #01345B;
+                            background-color: #01345b85;
+                            color: white;
+                            border-radius: 10px;
+
+                        }
+
+                    }
+                }
+                button{
+                    padding: 0px;
+                }
+
+            }
+        }
+        
+    }
+}

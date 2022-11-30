@@ -15,43 +15,44 @@ const dom_inputImg = dom_dialog.querySelector("#inputImg");
 const dom_description = dom_dialog.querySelector("#description");
 
 // variables_____________________________________
+let getData = ""
 let Products = [
-    {
-        img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-        title: "Zephyrus DuO",
-        price: "$1000",
-        availablity: "in stock",
-        cpu: "intel core i9",
-        screen: "13inch",
-        ram: "16GB",
-        storage: "512GB SSD",
-        color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    },
-    {
-        img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-        title: "Zephyrus DuO",
-        price: "$1000",
-        availablity: "in stock",
-        cpu: "intel core i9",
-        screen: "13inch",
-        ram: "16GB",
-        storage: "512GB SSD",
-        color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    },
-    {
-        img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-        title: "Zephyrus DuO",
-        price: "$1000",
-        availablity: "in stock",
-        cpu: "intel core i9",
-        screen: "13inch",
-        ram: "16GB",
-        storage: "512GB SSD",
-        color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    },
+    // {
+    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
+    //     title: "Zephyrus DuO",
+    //     price: "$1000",
+    //     availablity: "in stock",
+    //     cpu: "intel core i9",
+    //     screen: "13inch",
+    //     ram: "16GB",
+    //     storage: "512GB SSD",
+    //     color: "red",
+    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+    // },
+    // {
+    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
+    //     title: "Zephyrus DuO",
+    //     price: "$1000",
+    //     availablity: "in stock",
+    //     cpu: "intel core i9",
+    //     screen: "13inch",
+    //     ram: "16GB",
+    //     storage: "512GB SSD",
+    //     color: "red",
+    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+    // },
+    // {
+    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
+    //     title: "Zephyrus DuO",
+    //     price: "$1000",
+    //     availablity: "in stock",
+    //     cpu: "intel core i9",
+    //     screen: "13inch",
+    //     ram: "16GB",
+    //     storage: "512GB SSD",
+    //     color: "red",
+    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+    // },
     
     
 ]
@@ -135,6 +136,7 @@ function renderProduct(){
 }
 
 
+
 function onUpload(){
     //  display dialog
     show(dom_dialog)
@@ -154,22 +156,18 @@ function onUpload(){
     dom_color.value = "";
     dom_description.value = "";
     // call function onCrate
-    btn_create.addEventListener("click", function(){
-        console.log("click create")
-        onCreateOrUpdate(null);
-        index = null;
-    })
+
 
 
 }
 
-function onCreateOrUpdate(index){
+function onCreateOrUpdate(index , isCreate = true){
     // hide dialog
     hide(dom_dialog)
     // create object
     let product = {}
     // take value from input
-    product.img = dom_inputImg.value;
+    product.img = getData;
     product.title = dom_title.value;
     product.price = dom_price.value;
     product.availablity = dom_availablity.value;
@@ -182,7 +180,7 @@ function onCreateOrUpdate(index){
 
 
     // push to Products list
-    if (index === null){
+    if (isCreate){
         Products.push(product);
     } else {
         Products[index] = product;
@@ -191,10 +189,6 @@ function onCreateOrUpdate(index){
     saveProduct();
     // Update table
     renderProduct();
-
-
-
-
     
 }
 
@@ -231,8 +225,7 @@ function edit(event){
     // make Button edit call to onEdit
     btn_edit.addEventListener("click", function(){
 
-        console.log("click edit")
-        onCreateOrUpdate(index);
+        onCreateOrUpdate(index, false);
         index = null;
 
     })
@@ -244,7 +237,6 @@ function takeAway(event){
 
     // remove the Products
     Products.splice(index, 1);
-    console.log('remove Products');
 
     //  update the local storage
     saveProduct()
@@ -253,7 +245,15 @@ function takeAway(event){
 }
 
 
-
+function encodeImageFileAsURL(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      getData =  reader.result;
+      console.log(getData);
+    }
+    reader.readAsDataURL(file);
+}
 
 
 // Main_____________________________________ 
@@ -266,11 +266,17 @@ btn_cancle.addEventListener("click", function(){
     hide(dom_dialog)
 })
 
+dom_inputImg.addEventListener("change", function(event){
+    encodeImageFileAsURL(this)
+    
+})
+
+btn_create.addEventListener("click", function(){
+    onCreateOrUpdate(null);
+})
 
 
-
-
-saveProduct()
+// saveProduct()
 // loadProduct()
 
 
