@@ -21,6 +21,7 @@ let product = [
         title: "Zephyrus DuO",
         price: "$1000",
         availablity: "in stock",
+        cpu: "intel core i9",
         screen: "13inch",
         ram: "16GB",
         storage: "512GB SSD",
@@ -32,6 +33,7 @@ let product = [
         title: "Zephyrus DuO",
         price: "$1000",
         availablity: "in stock",
+        cpu: "intel core i9",
         screen: "13inch",
         ram: "16GB",
         storage: "512GB SSD",
@@ -43,12 +45,14 @@ let product = [
         title: "Zephyrus DuO",
         price: "$1000",
         availablity: "in stock",
+        cpu: "intel core i9",
         screen: "13inch",
         ram: "16GB",
         storage: "512GB SSD",
         color: "red",
         description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
     },
+    
     
 ]
 
@@ -134,6 +138,10 @@ function renderProduct(){
 function onUpload(){
     //  display dialog
     show(dom_dialog)
+    // show bottun create
+    show(btn_create)
+    // hide bottun edit
+    hide(btn_edit)
     // clear text from input
     dom_inputImg.value = "";
     dom_title.value = "";
@@ -145,15 +153,22 @@ function onUpload(){
     dom_storage.value = "";
     dom_color.value = "";
     dom_description.value = "";
+    // call function onCrate
+    btn_create.addEventListener("click", function(event){
+        console.log("click create")
+        onCreateOrUpdate(event);
+        index = null;
+    })
 
 
 }
 
-function onCreate(){
+function onCreateOrUpdate(event, index,  isCreate = true){
     // hide dialog
     hide(dom_dialog)
     // create object
     let new_product = {}
+    console.log("hello")
     // take value from input
     new_product.img = dom_inputImg.value;
     new_product.title = dom_title.value;
@@ -165,8 +180,14 @@ function onCreate(){
     new_product.storage = dom_storage.value;
     new_product.color = dom_color.value;
     new_product.description = dom_description.value;   
+
+
     // push to product list
-    product.push(new_product);
+    if (isCreate){
+        product.push(new_product);
+    } else {
+        product[index] = new_product;
+    }
     // save product
     saveProduct();
     // Update table
@@ -179,8 +200,48 @@ function onCreate(){
 }
 
 
-function edit(){
-    console.log('hello');
+function edit(event){
+    //  Get index parent
+    let index = event.target.parentElement.parentElement.dataset.index;
+    // display dom_dialog
+    show(dom_dialog);
+    // show Button edit
+    show(btn_edit);
+    // hide Button create
+    hide(btn_create);
+    // get value product by index into input field
+    let pre = product[index];
+    // update value
+    dom_inputImg.value = pre.img;
+    dom_title.value = pre.title;
+    dom_price.value = pre.price;
+    dom_availablity = pre.availablity;
+    dom_screen.value = pre.screen;
+    dom_cpu.value = pre.cpu;
+    dom_ram.value = pre.ram;
+    dom_storage.value = pre.storage;
+    dom_color.value = pre.color;
+    dom_description.value = pre.description;
+    
+
+
+    // call function onCrate
+
+
+    // make Button edit call to onEdit
+    btn_edit.addEventListener("click", function(event){
+
+        console.log("click edit")
+        onCreateOrUpdate(event,index, false);
+        index = null;
+
+    })
+
+}
+function onEdit(index) {
+    // hide dialog
+    hide(dom_dialog);
+
 }
 function takeAway(event){
     //  Get index parent
@@ -199,7 +260,9 @@ function takeAway(event){
 
 // Main_____________________________________ 
 let btn = dom_dialog.querySelectorAll("button");
-let btn_cancle =btn[0]
+let btn_cancle =btn[0];
+let btn_create = btn[1];
+let btn_edit = btn[2];
 
 btn_cancle.addEventListener("click", function(){
     hide(dom_dialog)
