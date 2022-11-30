@@ -15,7 +15,7 @@ const dom_inputImg = dom_dialog.querySelector("#inputImg");
 const dom_description = dom_dialog.querySelector("#description");
 
 // variables_____________________________________
-let product = [
+let Products = [
     {
         img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
         title: "Zephyrus DuO",
@@ -26,7 +26,7 @@ let product = [
         ram: "16GB",
         storage: "512GB SSD",
         color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
     },
     {
         img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
@@ -38,7 +38,7 @@ let product = [
         ram: "16GB",
         storage: "512GB SSD",
         color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
     },
     {
         img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
@@ -50,7 +50,7 @@ let product = [
         ram: "16GB",
         storage: "512GB SSD",
         color: "red",
-        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
+        description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
     },
     
     
@@ -69,13 +69,13 @@ function hide(elements) {
 
 //  LOCAL STORAGE ---------------------------------------------------------
 function saveProduct() {
-    localStorage.setItem("product", JSON.stringify(product));
+    localStorage.setItem("Products", JSON.stringify(Products));
   }
   
   function loadProduct() {
-    let productStorage = JSON.parse(localStorage.getItem("product"));
+    let productStorage = JSON.parse(localStorage.getItem("Products"));
     if (productStorage !== null) {
-        product = productStorage;
+        Products = productStorage;
     }
   }
 
@@ -85,8 +85,8 @@ function renderProduct(){
     // rmove table 
     dom_table.querySelector("tbody").remove();
     let tbody = document.createElement("tbody");
-    for (let i in product){
-        spot_product = product[i];
+    for (let i in Products){
+        spot_product = Products[i];
         let tr = document.createElement("tr");
         tr.dataset.index = i;
 
@@ -154,41 +154,40 @@ function onUpload(){
     dom_color.value = "";
     dom_description.value = "";
     // call function onCrate
-    btn_create.addEventListener("click", function(event){
+    btn_create.addEventListener("click", function(){
         console.log("click create")
-        onCreateOrUpdate(event);
+        onCreateOrUpdate(null);
         index = null;
     })
 
 
 }
 
-function onCreateOrUpdate(event, index,  isCreate = true){
+function onCreateOrUpdate(index){
     // hide dialog
     hide(dom_dialog)
     // create object
-    let new_product = {}
-    console.log("hello")
+    let product = {}
     // take value from input
-    new_product.img = dom_inputImg.value;
-    new_product.title = dom_title.value;
-    new_product.price = dom_price.value;
-    new_product.availablity = dom_availablity.value;
-    new_product.screen = dom_screen.value;
-    new_product.cpu = dom_cpu.value;
-    new_product.ram = dom_ram.value;
-    new_product.storage = dom_storage.value;
-    new_product.color = dom_color.value;
-    new_product.description = dom_description.value;   
+    product.img = dom_inputImg.value;
+    product.title = dom_title.value;
+    product.price = dom_price.value;
+    product.availablity = dom_availablity.value;
+    product.screen = dom_screen.value;
+    product.cpu = dom_cpu.value;
+    product.ram = dom_ram.value;
+    product.storage = dom_storage.value;
+    product.color = dom_color.value;
+    product.description = dom_description.value;   
 
 
-    // push to product list
-    if (isCreate){
-        product.push(new_product);
+    // push to Products list
+    if (index === null){
+        Products.push(product);
     } else {
-        product[index] = new_product;
+        Products[index] = product;
     }
-    // save product
+    // save Products
     saveProduct();
     // Update table
     renderProduct();
@@ -209,13 +208,14 @@ function edit(event){
     show(btn_edit);
     // hide Button create
     hide(btn_create);
-    // get value product by index into input field
-    let pre = product[index];
+    // get value Products by index into input field
+    let pre = Products[index];
+    console.log(pre);
     // update value
-    dom_inputImg.value = pre.img;
+    // dom_inputImg.value = pre.img;
     dom_title.value = pre.title;
     dom_price.value = pre.price;
-    dom_availablity = pre.availablity;
+    dom_availablity.value = pre.availablity;
     dom_screen.value = pre.screen;
     dom_cpu.value = pre.cpu;
     dom_ram.value = pre.ram;
@@ -229,33 +229,31 @@ function edit(event){
 
 
     // make Button edit call to onEdit
-    btn_edit.addEventListener("click", function(event){
+    btn_edit.addEventListener("click", function(){
 
         console.log("click edit")
-        onCreateOrUpdate(event,index, false);
+        onCreateOrUpdate(index);
         index = null;
 
     })
-
-}
-function onEdit(index) {
-    // hide dialog
-    hide(dom_dialog);
 
 }
 function takeAway(event){
     //  Get index parent
     let index = event.target.parentElement.parentElement.dataset.index;
 
-    // remove the product
-    product.splice(index, 1);
-    console.log('remove product');
+    // remove the Products
+    Products.splice(index, 1);
+    console.log('remove Products');
 
     //  update the local storage
     saveProduct()
-    // Update product table
+    // Update Products table
     renderProduct();
 }
+
+
+
 
 
 // Main_____________________________________ 
@@ -267,7 +265,12 @@ let btn_edit = btn[2];
 btn_cancle.addEventListener("click", function(){
     hide(dom_dialog)
 })
-// saveProduct()
+
+
+
+
+
+saveProduct()
 // loadProduct()
 
 
