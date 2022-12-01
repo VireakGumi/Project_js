@@ -16,46 +16,7 @@ const dom_description = dom_dialog.querySelector("#description");
 
 // variables_____________________________________
 let getData = ""
-let products = [
-    // {
-    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-    //     title: "Zephyrus DuO",
-    //     price: "$1000",
-    //     availablity: "in stock",
-    //     cpu: "intel core i9",
-    //     screen: "13inch",
-    //     ram: "16GB",
-    //     storage: "512GB SSD",
-    //     color: "red",
-    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    // },
-    // {
-    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-    //     title: "Zephyrus DuO",
-    //     price: "$1000",
-    //     availablity: "in stock",
-    //     cpu: "intel core i9",
-    //     screen: "13inch",
-    //     ram: "16GB",
-    //     storage: "512GB SSD",
-    //     color: "red",
-    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    // },
-    // {
-    //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
-    //     title: "Zephyrus DuO",
-    //     price: "$1000",
-    //     availablity: "in stock",
-    //     cpu: "intel core i9",
-    //     screen: "13inch",
-    //     ram: "16GB",
-    //     storage: "512GB SSD",
-    //     color: "red",
-    //     description: "Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this Products may require an adapter or converter for use in your destination. Please check compatibility before purchasing."
-    // },
-    
-    
-]
+let products = []
 
 // Function_____________________________________
 
@@ -69,11 +30,11 @@ function hide(elements) {
 }
 
 //  LOCAL STORAGE ---------------------------------------------------------
-function saveProduct() {
+function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
   }
   
-  function loadProduct() {
+  function loadProducts() {
     let productStorage = JSON.parse(localStorage.getItem("products"));
     if (productStorage !== null) {
         products = productStorage;
@@ -82,7 +43,7 @@ function saveProduct() {
 
 // renderProduct function
 function renderProduct(){
-    loadProduct()
+    loadProducts()
     // remove table 
     dom_table.querySelector("tbody").remove();
     let tbody = document.createElement("tbody");
@@ -186,7 +147,7 @@ function onCreateOrUpdate(index , isCreate = true){
         products[index] = product;
     }
     // save Products
-    saveProduct();
+    saveProducts();
     // Update table
     renderProduct();
     
@@ -243,7 +204,7 @@ function takeAway(event){
     products.splice(index, 1);
 
     //  update the local storage
-    saveProduct()
+    saveProducts()
     // Update Products table
     renderProduct();
 }
@@ -286,8 +247,8 @@ btn_create.addEventListener("click", function(){
 })
 
 
-// saveProduct()
-// loadProduct()
+// saveProducts()
+// loadProducts()
 
 
 renderProduct()
