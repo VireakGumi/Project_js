@@ -1,6 +1,8 @@
 
 // variables_____________________________________
 const dom_slides = document.querySelectorAll(".mySlides");
+let  dom_search = document.querySelector(".search-input");
+
 // variables_____________________________________
 let slideIndex = 0;
 let products = []
@@ -34,7 +36,6 @@ function loadProduct() {
 
 function renderCard(){
     loadProduct()
-    console.log(products)
     document.querySelector("main").remove();
     let main = document.createElement("main");
     let list = document.createElement('div');
@@ -89,11 +90,9 @@ function renderCard(){
           card.appendChild(text);   
           a.appendChild(card)         
           list.appendChild(a);
-          console.log("hello");
         }
         main.appendChild(list);
         document.querySelector(".right-side").appendChild(main);
-        console.log(main)
       }
 function setData(event){
   let index = event.currentTarget.dataset.index;;
@@ -112,8 +111,38 @@ function createslide(){
     dom_slides[i].querySelector("img").style.width = "65%";
 }}
 
+// search for products
+function searchBook(event) {
+  let Textsearch= dom_search.value.toUpperCase();
+  let dom_main = document.querySelector("main .list-1");
+
+  // 2- Loop on all LI
+  for (let value of dom_main.children){
+    let title= value.querySelector('#title').textContent.toUpperCase();
+    value.style.display="none"
+  console.log(value);
+
+    if(title ==Textsearch|| title.includes(Textsearch)){
+      value.style.display="block"
+    }
+
+  }
+  
+
+  };
+
 // main________________________________
+
+
+
+
 showSlides(); 
 // loadProduct()
 renderCard();
+
+dom_search.addEventListener('keyup', function(e) {
+  searchBook(e);
+  console.log('hello')
+})
+
 createslide()

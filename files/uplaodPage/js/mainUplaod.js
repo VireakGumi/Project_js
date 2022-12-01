@@ -204,7 +204,7 @@ function edit(event){
     hide(btn_create);
     // get value Products by index into input field
     let pre = products[index];
-    console.log(pre.price);
+    // console.log(typeof(Number(pre.price)));
     // update value
     if (pre.img) {
         getData = pre.img
@@ -212,7 +212,7 @@ function edit(event){
 
     // dom_inputImg.value = pre.img;
     dom_title.value = pre.title;
-    // dom_price.value = ;
+    dom_price.value = pre.price.replace('$','');
     dom_availablity.value = pre.availablity;
     dom_screen.value = pre.screen;
     dom_cpu.value = pre.cpu;
