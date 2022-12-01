@@ -1,15 +1,12 @@
 .list-1{
-    // display: grid;
-    // grid-template-columns: repeat(2,1fr);
     display: flex;
     margin-top: -10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    // flex-direction: column;
-    // width: 100%;
 
     a{
         text-decoration: none;
+        height: 50% ;
     }
     .card{
         background-color: hsl(206, 98%, 18%);

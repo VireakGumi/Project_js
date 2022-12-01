@@ -96,6 +96,7 @@ button:hover {
 }
 .list-1 a {
   text-decoration: none;
+  height: 50%;
 }
 .list-1 .card {
   background-color: hsl(206deg, 98%, 18%);
@@ -233,9 +234,10 @@ body {
   margin-top: 50px;
 }
 .pro-container .header .slideshow-container {
-  max-width: 60%;
+  max-width: 100%;
   position: relative;
   margin: auto;
+  left: 18%;
 }
 .pro-container .header .slideshow-container .mySlides {
   display: none;

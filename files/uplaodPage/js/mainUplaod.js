@@ -16,7 +16,7 @@ const dom_description = dom_dialog.querySelector("#description");
 
 // variables_____________________________________
 let getData = ""
-let Products = [
+let products = [
     // {
     //     img: "../../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg",
     //     title: "Zephyrus DuO",
@@ -70,30 +70,30 @@ function hide(elements) {
 
 //  LOCAL STORAGE ---------------------------------------------------------
 function saveProduct() {
-    localStorage.setItem("Products", JSON.stringify(Products));
+    localStorage.setItem("products", JSON.stringify(products));
   }
   
   function loadProduct() {
-    let productStorage = JSON.parse(localStorage.getItem("Products"));
+    let productStorage = JSON.parse(localStorage.getItem("products"));
     if (productStorage !== null) {
-        Products = productStorage;
+        products = productStorage;
     }
   }
 
 // renderProduct function
 function renderProduct(){
     loadProduct()
-    // rmove table 
+    // remove table 
     dom_table.querySelector("tbody").remove();
     let tbody = document.createElement("tbody");
-    for (let i in Products){
-        spot_product = Products[i];
+    for (let i in products){
+        spot_product = products[i];
         let tr = document.createElement("tr");
         tr.dataset.index = i;
 
         // add ID
         let td_id = document.createElement("td");
-        td_id.textContent = i
+        td_id.textContent = Number(i) + 1;
         tr.appendChild(td_id);
 
         // add textContent title to td
@@ -181,9 +181,9 @@ function onCreateOrUpdate(index , isCreate = true){
 
     // push to Products list
     if (isCreate){
-        Products.push(product);
+        products.push(product);
     } else {
-        Products[index] = product;
+        products[index] = product;
     }
     // save Products
     saveProduct();
@@ -203,9 +203,12 @@ function edit(event){
     // hide Button create
     hide(btn_create);
     // get value Products by index into input field
-    let pre = Products[index];
-    console.log(pre);
+    let pre = products[index];
+    console.log(pre.img);
     // update value
+    if (pre.img) {
+        getData = pre.img
+    }
     // dom_inputImg.value = pre.img;
     dom_title.value = pre.title;
     dom_price.value = pre.price;
@@ -236,7 +239,7 @@ function takeAway(event){
     let index = event.target.parentElement.parentElement.dataset.index;
 
     // remove the Products
-    Products.splice(index, 1);
+    products.splice(index, 1);
 
     //  update the local storage
     saveProduct()
@@ -250,7 +253,7 @@ function encodeImageFileAsURL(element) {
     var reader = new FileReader();
     reader.onloadend = function() {
       getData =  reader.result;
-      console.log(getData);
+    //   console.log(getData);
     }
     reader.readAsDataURL(file);
 }
@@ -269,7 +272,7 @@ btn_cancle.addEventListener("click", function(){
 dom_inputImg.addEventListener("change", function(event){
     encodeImageFileAsURL(this)
     
-})
+});
 
 btn_create.addEventListener("click", function(){
     onCreateOrUpdate(null);

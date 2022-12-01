@@ -1,6 +1,12 @@
+
+// variables_____________________________________
+const dom_slides = document.querySelectorAll(".mySlides");
 // variables_____________________________________
 let slideIndex = 0;
-let product = []
+let products = []
+
+
+
 
 // Function_____________________________________
 function showSlides() {
@@ -16,31 +22,98 @@ function showSlides() {
 
 
 function saveProduct() {
-    localStorage.setItem("Products", JSON.stringify(Products));
+    localStorage.setItem("products", JSON.stringify(products));
   }
   
 function loadProduct() {
-    let productStorage = JSON.parse(localStorage.getItem("Products"));
+    let productStorage = JSON.parse(localStorage.getItem("products"));
     if (productStorage !== null) {
-        Products = productStorage;
+        products = productStorage;
     }
 }
 
 function renderCard(){
     loadProduct()
+    console.log(products)
     document.querySelector("main").remove();
-    for (let i = 0; i < 3; i++) {
-        let list = document.createElement('div');
-        list.className = "list-1";
-        for(let n in product){
-            let a = document.createElement('a');
-            a.href = '../../detailPage/detail.html'        
-            let card = document.createElement('div');
-            crad.className = "card";    
-            
-        } 
-    }
+    let main = document.createElement("main");
+    let list = document.createElement('div');
+    list.className = "list-1";
+    for(let n in products){
+          let a = document.createElement('a');
+          a.href = '../detailPage/detail.html'  
+          a.dataset.index = n
+          a.addEventListener("click", setData);
+          let card = document.createElement('div');
+          card.className = "card"; 
+          let sub = document.createElement('div');
+          sub.className = "sub-card";
+          let image = document.createElement('img');
+          image.src = products[n].img;
+          image.style.width = '300px'
+          sub.appendChild(image);
+          let text = document.createElement('div');
+          text.className = "text-card";
+          let toptext = document.createElement('div');
+          toptext.className = "top-text";
+          let title = document.createElement('p');
+          title.id = "title";
+          title.textContent = products[n].title;
+          let ram = document.createElement('p');
+          ram.id = "ram";
+          ram.textContent = products[n].ram;
+          let cup = document.createElement('p');
+          cup.id = "cup";
+          cup.textContent = products[n].cup;
+          let storage = document.createElement('p');
+          storage.id = "storage";
+          storage.textContent = products[n].storage;
+          toptext.appendChild(title);
+          toptext.appendChild(ram);
+          toptext.appendChild(cup);
+          toptext.appendChild(storage);
+          let subTewxt = document.createElement('div');
+          subTewxt.className = "sub-text";
+          let img = document.createElement('img');
+          img.src = "../../../img/star.png";
+          img.style.width = "100px";
+          subTewxt.appendChild(img);
+          let price = document.createElement('p');
+          price.id = "price";
+          price.textContent = products[n].price;
+          subTewxt.appendChild(price);
+          toptext.appendChild(subTewxt);
+          text.appendChild(toptext);
+          
+          card.appendChild(sub);
+          card.appendChild(text);   
+          a.appendChild(card)         
+          list.appendChild(a);
+          console.log("hello");
+        }
+        main.appendChild(list);
+        document.querySelector(".right-side").appendChild(main);
+        console.log(main)
+      }
+function setData(event){
+  let index = event.currentTarget.dataset.index;;
+  products.index = index;
+
+  localStorage.setItem("products", JSON.stringify(products));
+  
+  saveProduct();
+  loadProduct();
+  
 }
+// console.log(dom_slides[1])
+function createslide(){
+  for (let i = 0; i < dom_slides.length; i++) {
+    dom_slides[i].querySelector("img").src = products[i].img;
+    dom_slides[i].querySelector("img").style.width = "65%";
+}}
 
 // main________________________________
 showSlides(); 
+// loadProduct()
+renderCard();
+createslide()
