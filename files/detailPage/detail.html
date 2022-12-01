@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHI_GA Detail</title>
     <link rel="stylesheet" href="../../css/style.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -24,99 +25,140 @@
                 <a href="../uplaodPage/upload.html">Upload</a>
             </div>
         </nav>
+        <div class="box-dialog-chart" style="display: none;">
+            <dialog open>
+                <header>To buy</header>
+                <div class="list-chart">
+                    <div class="item">
+                        <img src="../../img/ASUS-RGOS-header-1.jpg" alt="" width="50px">
+                        <h4>asus</h4>
+                        <menu>
+                            <button>Remove</button>
+                            <button>Buy</button>
+                        </menu>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+        <div class="box-dialog-buy" style="display: none;">
+            <dialog open>
+                <header>Buy</header>
+                <div class="container">
+                    <form>
+                        <div class="billing">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="text" id="email" name="email" placeholder="john@example.com">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="city" placeholder="New York">
+
+                            <div class="address">
+                                <div>
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" placeholder="NY">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+                            <div class="year-number">
+                                <div>
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="expyear" placeholder="2018">
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="352">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <button>Buy</button>
+            </dialog>
+        </div>
         <div class="title">
+            <img src="" alt="">
             <h1>Title</h1>
         </div>
         <div class="info-detail">
             <div class="info">
-                <div class="imgae"></div>
+                <div id="imgae"></div>
                 <div class="info-text">
-                    <p>Title</p>
-                    <p>Price: <span></span></p>
-                    <p>Availablity: <span></span></p>
-                    <p>Product: <span></span></p>
-                    <p>Series: <span></span></p>
-                    <p>Screen: <span></span></p>
-                    <p>Color: <span></span></p> 
-                    <p>CPU: <span></span></p> 
-                    <p>RAM: <span></span></p>
-                    <p>storage: <span></span></p>
-                </div>  
-                <p>Description: <span></span></p>  
-        </div>
-        <div class="other">
-            <div class="list-1">
-                <div class="card">
-                    <div class="sub-card">
-                        <img src="#####" alt="">
-                    </div>
-                    <div class="text-card">
-                        <p>ASUS</p>
-                        <div class="sub-text">
-                            <p></p>
-                            <p>$900</p>
-                        </div>
-                    </div>
+                    <p id="brand">Title</p>
+                    <p>Price: <span id="price"></span></p>
+                    <p>Availablity: <span id="availablity"></span></p>
+                    <p>Screen: <span id="screen"></span></p>
+                    <p>Color: <span id="color"></span></p>
+                    <p>CPU: <span id="cpu"></span></p>
+                    <p>RAM: <span id="ram"></span></p>
+                    <p>storage: <span id="store"></span></p>
                 </div>
-                <div class="card">
-                    <div class="sub-card">
-                        <img src="#####" alt="">
-                    </div>
-                    <div class="text-card">
-                        <p>ASUS</p>
-                        <div class="sub-text">
-                            <p></p>
-                            <p>$900</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="sub-card">
-                        <img src="#####" alt="">
-                    </div>
-                    <div class="text-card">
-                        <p>ASUS</p>
-                        <div class="sub-text">
-                            <p></p>
-                            <p>$900</p>
-                        </div>
-                    </div>
-                </div>
+                <p>Description: <span id="description"></span></p>
+                <menu>
+                    <button>Buy</button>
+                    <button>Chart</button>
+                </menu>
             </div>
-        </div>
-        <div class="footer">
-            <div class="footer-left">
-                <a href="../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="250px"></a>
-                <div class="text">
-                    <p>Phone: 011 629 387</p>
-                    <p>Email: name@gmail.com</p>
-                    <p>Address: A051, 1 national raod, Phnom Penh, cambodia.</p>
-                    <p>Working days/Hours: Mon - Sun / 8:00 AM - 8:00 PM</p>
-                </div>
+            <div class="other">
+                <h1>Other laptop</h1>
+                <main>
+                    <div class="list-1"></div>
+                </main>
             </div>
-            <div class="footer-center">
-                <h2>Content</h2>
-                <ul>
-                    <li><a href="../../index.html">Home</a></li>
-                    <li><a href="../productPage/product.html">Product</a></li>
-                    <li><a href="../uplaodPage/upload.html">Upload</a></li>
-                    <li><a href="../help.html">Upload</a></li>
-            </div>
-            <div class="footer-right">
-                <div class="search">
-                    <input type="text" class="search-input" placeholder="Search for a product">
-                    <i class="material-icons">search</i>
+            <div class="footer">
+                <div class="footer-left">
+                    <a href="../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="250px"></a>
+                    <div class="text">
+                        <p>Phone: 011 629 387</p>
+                        <p>Email: name@gmail.com</p>
+                        <p>Address: A051, 1 national raod, Phnom Penh, cambodia.</p>
+                        <p>Working days/Hours: Mon - Sun / 8:00 AM - 8:00 PM</p>
+                    </div>
                 </div>
-                <div class="media">
-                    <img src="../../img/Facebook_Logo_(2019).png" alt="" width="40px">  
-                    <img src="../../img/ig.png" alt="" width="40px">
-                    <img src="../../img/tw.png" alt="" width="40px">
-                    <img src="../../img/tele.png" alt="" width="40px">
+                <div class="footer-center">
+                    <h2>Content</h2>
+                    <ul>
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../productPage/product.html">Product</a></li>
+                        <li><a href="../uplaodPage/upload.html">Upload</a></li>
+                        <li><a href="../help.html">Upload</a></li>
                 </div>
-            </div>
+                <div class="footer-right">
+                    <div class="search">
+                        <input type="text" class="search-input" placeholder="Search for a product">
+                        <i class="material-icons">search</i>
+                    </div>
+                    <div class="media">
+                        <img src="../../img/Facebook_Logo_(2019).png" alt="" width="40px">
+                        <img src="../../img/ig.png" alt="" width="40px">
+                        <img src="../../img/tw.png" alt="" width="40px">
+                        <img src="../../img/tele.png" alt="" width="40px">
+                    </div>
+                </div>
 
+            </div>
         </div>
-    </div>
 </body>
+<script src="js/detail.js"></script>
 
 </html>
