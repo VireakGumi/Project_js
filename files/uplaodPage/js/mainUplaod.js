@@ -169,7 +169,7 @@ function onCreateOrUpdate(index , isCreate = true){
     // take value from input
     product.img = getData;
     product.title = dom_title.value;
-    product.price = dom_price.value;
+    product.price = formatDollar(Number(dom_price.value));
     product.availablity = dom_availablity.value;
     product.screen = dom_screen.value;
     product.cpu = dom_cpu.value;
@@ -204,14 +204,15 @@ function edit(event){
     hide(btn_create);
     // get value Products by index into input field
     let pre = products[index];
-    console.log(pre.img);
+    console.log(pre.price);
     // update value
     if (pre.img) {
         getData = pre.img
     }
+
     // dom_inputImg.value = pre.img;
     dom_title.value = pre.title;
-    dom_price.value = pre.price;
+    // dom_price.value = ;
     dom_availablity.value = pre.availablity;
     dom_screen.value = pre.screen;
     dom_cpu.value = pre.cpu;
@@ -247,6 +248,12 @@ function takeAway(event){
     renderProduct();
 }
 
+function formatDollar(num) {
+    var p = num.toFixed(2).split(".");
+    return '$'+p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+        return num + (num != "-" && i && !(i % 3) ? "," : "") + acc;
+    }, "") + "." + p[1];
+}
 
 function encodeImageFileAsURL(element) {
     var file = element.files[0];
