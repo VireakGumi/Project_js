@@ -11,10 +11,10 @@ let  span_description = document.querySelector('#description');
 let  brand = document.querySelector('#brand');
 let  dom_title = document.querySelector(".title");
 let dom_image = document.querySelector("#image");
-let dom_chart = document.querySelector(".box-dialog-chart");
+let dom_cart = document.querySelector(".box-dialog-chart");
 
 let products = [];
-let charts = []
+let cart = []
 let index = Number(localStorage.getItem("index"));
 // Function_____________________________________
 
@@ -112,26 +112,29 @@ function renderCard() {
 function addCart(){
     let chart = {
         title: product.title,
-        img_chart: product.img
+        img_chart: product.img,
+        id: product.id
     }
-    charts.push(chart);
+    cart.push(chart);
+    localStorage.setItem("cart", JSON.stringify(cart));
     showonWeb();
 }
 
 function showonWeb(){
-    if(charts.length){
-        show(dom_chart);
-        dom_chart.querySelector(".list-chart").remove();
+    cart = JSON.parse(localStorage.getItem("cart"));
+    if(cart.length){
+        show(dom_cart);
+        dom_cart.querySelector(".list-cart").remove();
         let list = document.createElement('div');
-        list.className = "list-chart";
-        for (let n in charts) {
+        list.className = "list-cart";
+        for (let n in cart) {
             let item = document.createElement("div");
             item.className = "item";
             let img_chart = document.createElement("img");
-            img_chart.src = charts[n].img_chart;
+            img_chart.src = cart[n].img_chart;
             img_chart.style.width = "100px";
             let h4 = document.createElement("h4");
-            h4.textContent = charts[n].title;
+            h4.textContent = cart[n].title;
             let menu = document.createElement("menu");
             let btnRemove = document.createElement("button");
             btnRemove.textContent = "Remove";
@@ -147,13 +150,14 @@ function showonWeb(){
             list.appendChild(item);
             console.log(list)
         }
-        dom_chart.appendChild(list);
+        dom_cart.appendChild(list);
+        console.log(dom_cart)
 
 
 
         
     }else{
-        hide(dom_chart);
+        hide(dom_cart);
     }
 }
 
@@ -171,6 +175,9 @@ let product = products[index];
 dom_title.style.backgroundImage = 'url('+product.img+')'
 let h1 = dom_title.querySelector('h1');
 h1.textContent = product.title;
+if (cart == []){
+    hide(dom_cart);
+}
 generateDetails()
-let ss = dom_chart.querySelector('.list-chart');
-console.log(ss)
+// let ss = dom_cart.querySelector('.list-chart');
+// console.log(ss)

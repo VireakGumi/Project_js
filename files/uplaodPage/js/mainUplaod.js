@@ -17,7 +17,7 @@ const dom_description = dom_dialog.querySelector("#description");
 // variables_____________________________________
 let getData = ""
 let products = []
-
+let id = 0;
 // Function_____________________________________
 
 // show elements
@@ -122,11 +122,15 @@ function onUpload(){
 
 }
 
+
+
+
 function onCreateOrUpdate(index , isCreate = true){
     // hide dialog
     hide(dom_dialog)
     // create object
     let product = {}
+
     // take value from input
     product.img = getData;
     product.title = dom_title.value;
@@ -138,6 +142,8 @@ function onCreateOrUpdate(index , isCreate = true){
     product.storage = dom_storage.value;
     product.color = dom_color.value;
     product.description = dom_description.value;   
+    product.id = id
+
 
 
     // push to Products list
@@ -182,7 +188,11 @@ function edit(event){
     dom_color.value = pre.color;
     dom_description.value = pre.description;
     
-
+    if (products[index].id == id){
+        id = products[index].id;
+    }else{
+        id++;
+    }
 
     // call function onCrate
 
