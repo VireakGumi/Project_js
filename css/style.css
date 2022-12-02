@@ -339,6 +339,162 @@ body {
   padding: 0px;
 }
 
+.container-detail {
+  width: 100%;
+}
+.container-detail .title {
+  display: flex;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+.container-detail .title h1 {
+  color: white;
+}
+.container-detail .info-detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 30px 0px;
+}
+.container-detail .info-detail .info {
+  display: flex;
+  flex-direction: column;
+}
+.container-detail .info-detail .info .sub-info {
+  display: flex;
+}
+.container-detail .info-detail .info .sub-info #image {
+  background-color: bisque;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  margin: 10px 30px 10px 0px;
+}
+.container-detail .info-detail .info .sub-info #image img {
+  width: 100%;
+}
+.container-detail .info-detail p {
+  font-weight: bold;
+}
+.container-detail .info-detail p span {
+  font-weight: normal;
+  margin-left: 10px;
+}
+.container-detail .info-detail menu {
+  display: flex;
+  justify-content: flex-end;
+}
+.container-detail .info-detail menu button {
+  margin-left: 30px;
+  padding: 7px 20px;
+}
+.container-detail .info-detail .other {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-detail .info-detail .other main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container-detail .box-dialog-chart {
+  position: fixed;
+  top: 65px;
+  left: 5px;
+  width: 30%;
+}
+.container-detail .box-dialog-chart dialog {
+  width: 100%;
+  border-radius: 10px;
+}
+.container-detail .box-dialog-chart dialog header {
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+.container-detail .box-dialog-chart dialog .list-chart {
+  width: 100%;
+}
+.container-detail .box-dialog-chart dialog .list-chart .item {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.container-detail .box-dialog-chart dialog .list-chart .item img {
+  border-radius: 10px;
+  width: 100px;
+}
+.container-detail .box-dialog-chart dialog .list-chart .item menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 44%;
+}
+.container-detail .box-dialog-chart dialog .list-chart .item menu button {
+  padding: 5px 10px;
+}
+.container-detail .box-dialog-buy {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.614);
+}
+.container-detail .box-dialog-buy dialog {
+  position: fixed;
+  top: 20%;
+  padding: 30px;
+  width: 35%;
+  border-radius: 10px;
+}
+.container-detail .box-dialog-buy dialog .container {
+  width: 100%;
+}
+.container-detail .box-dialog-buy dialog .container form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container-detail .box-dialog-buy dialog .container form input {
+  padding: 7px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+.container-detail .box-dialog-buy dialog .container form .billing {
+  display: flex;
+  flex-direction: column;
+  margin-top: -42px;
+}
+.container-detail .box-dialog-buy dialog .container form .payment {
+  display: flex;
+  flex-direction: column;
+}
+.container-detail .box-dialog-buy dialog .btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.container-detail .box-dialog-buy dialog .btn button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 .container-upload {
   width: 100%;
   height: 100vh;

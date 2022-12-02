@@ -12,37 +12,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav>
-            <div class="navbar-left">
-                <a href="../../index.html">Home</a>
-                <a href="../productPage/product.html" class="active">Product</a>
-            </div>
-            <div class="navbar-mid">
-                <a href="../../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="150px"></a>
-            </div>
-            <div class="navbar-right">
-                <a href="../uplaodPage/upload.html">Upload</a>
-            </div>
-        </nav>
-        <div class="box-dialog-chart" style="display: none;">
-            <dialog open>
-                <header>To buy</header>
-                <div class="list-chart">
-                    <div class="item">
-                        <img src="../../img/ASUS-RGOS-header-1.jpg" alt="" width="50px">
-                        <h4>asus</h4>
-                        <menu>
-                            <button>Remove</button>
-                            <button>Buy</button>
-                        </menu>
-                    </div>
-                </div>
-            </dialog>
-        </div>
+    <div class="container-detail">
         <div class="box-dialog-buy" style="display: none;">
             <dialog open>
-                <header>Buy</header>
+                <!-- <header>Buy</header> -->
                 <div class="container">
                     <form>
                         <div class="billing">
@@ -55,13 +28,8 @@
                             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                             <label for="city"><i class="fa fa-institution"></i> City</label>
                             <input type="text" id="city" name="city" placeholder="New York">
-
-                            <div class="address">
-                                <div>
-                                    <label for="state">State</label>
-                                    <input type="text" id="state" name="state" placeholder="NY">
-                                </div>
-                            </div>
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="NY">
                         </div>
 
                         <div class="payment">
@@ -93,30 +61,47 @@
                         </div>
                     </form>
                 </div>
-                <button>Buy</button>
+                <div class="btn">
+                    <button onclick="hideBuy()">Back</button>
+                    <button>Buy</button>
+
+                </div>
             </dialog>
         </div>
+        <nav>
+            <div class="navbar-left">
+                <a href="../../index.html">Home</a>
+                <a href="../productPage/product.html" class="active">Product</a>
+            </div>
+            <div class="navbar-mid">
+                <a href="../../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="150px"></a>
+            </div>
+            <div class="navbar-right">
+                <a href="../uplaodPage/upload.html">Upload</a>
+            </div>
+        </nav>
         <div class="title">
-            <img src="" alt="">
             <h1>Title</h1>
         </div>
         <div class="info-detail">
             <div class="info">
-                <div id="imgae"></div>
-                <div class="info-text">
-                    <p id="brand">Title</p>
-                    <p>Price: <span id="price"></span></p>
-                    <p>Availablity: <span id="availablity"></span></p>
-                    <p>Screen: <span id="screen"></span></p>
-                    <p>Color: <span id="color"></span></p>
-                    <p>CPU: <span id="cpu"></span></p>
-                    <p>RAM: <span id="ram"></span></p>
-                    <p>storage: <span id="store"></span></p>
+                <div class="sub-info">
+                    <div id="image"></div>
+                    <div class="info-text">
+                        <p id="brand">Title</p>
+                        <p>Price: <span id="price"></span></p>
+                        <p>Availablity: <span id="availablity"></span></p>
+                        <p>Screen: <span id="screen"></span></p>
+                        <p>Color: <span id="color"></span></p>
+                        <p>CPU: <span id="cpu"></span></p>
+                        <p>RAM: <span id="ram"></span></p>
+                        <p>storage: <span id="store"></span></p>
+                    </div>
                 </div>
                 <p>Description: <span id="description"></span></p>
                 <menu>
                     <button>Buy</button>
-                    <button>Chart</button>
+                    <button onclick="addCart()">Chart</button>
                 </menu>
             </div>
             <div class="other">
@@ -125,39 +110,48 @@
                     <div class="list-1"></div>
                 </main>
             </div>
-            <div class="footer">
-                <div class="footer-left">
-                    <a href="../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="250px"></a>
-                    <div class="text">
-                        <p>Phone: 011 629 387</p>
-                        <p>Email: name@gmail.com</p>
-                        <p>Address: A051, 1 national raod, Phnom Penh, cambodia.</p>
-                        <p>Working days/Hours: Mon - Sun / 8:00 AM - 8:00 PM</p>
-                    </div>
-                </div>
-                <div class="footer-center">
-                    <h2>Content</h2>
-                    <ul>
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../productPage/product.html">Product</a></li>
-                        <li><a href="../uplaodPage/upload.html">Upload</a></li>
-                        <li><a href="../help.html">Upload</a></li>
-                </div>
-                <div class="footer-right">
-                    <div class="search">
-                        <input type="text" class="search-input" placeholder="Search for a product">
-                        <i class="material-icons">search</i>
-                    </div>
-                    <div class="media">
-                        <img src="../../img/Facebook_Logo_(2019).png" alt="" width="40px">
-                        <img src="../../img/ig.png" alt="" width="40px">
-                        <img src="../../img/tw.png" alt="" width="40px">
-                        <img src="../../img/tele.png" alt="" width="40px">
-                    </div>
-                </div>
-
-            </div>
         </div>
+        <div class="footer">
+            <div class="footer-left">
+                <a href="../index.html"><img src="../../img/shi_ga-logo (1).png" alt="" width="250px"></a>
+                <div class="text">
+                    <p>Phone: 011 629 387</p>
+                    <p>Email: name@gmail.com</p>
+                    <p>Address: A051, 1 national raod, Phnom Penh, cambodia.</p>
+                    <p>Working days/Hours: Mon - Sun / 8:00 AM - 8:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-center">
+                <h2>Content</h2>
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../productPage/product.html">Product</a></li>
+                    <li><a href="../uplaodPage/upload.html">Upload</a></li>
+                    <li><a href="../help.html">Upload</a></li>
+            </div>
+            <div class="footer-right">
+                <div class="search">
+                    <input type="text" class="search-input" placeholder="Search for a product">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="media">
+                    <img src="../../img/Facebook_Logo_(2019).png" alt="" width="40px">
+                    <img src="../../img/ig.png" alt="" width="40px">
+                    <img src="../../img/tw.png" alt="" width="40px">
+                    <img src="../../img/tele.png" alt="" width="40px">
+                </div>
+            </div>
+
+        </div>
+        <div class="box-dialog-chart" style="display: none;">
+            <dialog open>
+                <header>To buy</header>
+                <div class="list-chart"></di>
+   
+        </div>
+        </dialog>
+    </div>
+
 </body>
 <script src="js/detail.js"></script>
 
