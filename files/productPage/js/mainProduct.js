@@ -86,8 +86,6 @@ function renderCard() {
 function setData(event) {
   let index = event.currentTarget.dataset.index;;
   localStorage.setItem("index", Number(index));
-
-
 }
 // console.log(dom_slides[1])
 function createslide() {

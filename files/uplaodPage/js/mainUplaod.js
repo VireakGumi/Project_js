@@ -3,18 +3,19 @@ const dom_dialog = document.querySelector(".content-dialog");
 const dom_table = document.querySelector("table");
 
 // Constants DOM elements_____________________________________
-const dom_title = dom_dialog.querySelector("#title");
-const dom_price = dom_dialog.querySelector("#price");
-const dom_availablity = dom_dialog.querySelector("#availablity");
-const dom_screen = dom_dialog.querySelector("#screen");
-const dom_cpu = dom_dialog.querySelector("#cpu");
-const dom_ram = dom_dialog.querySelector("#ram");
-const dom_storage = dom_dialog.querySelector("#storage");
-const dom_color = dom_dialog.querySelector("#color");
-const dom_inputImg = dom_dialog.querySelector("#inputImg");
-const dom_description = dom_dialog.querySelector("#description");
+let dom_title = dom_dialog.querySelector("#title");
+let dom_price = dom_dialog.querySelector("#price");
+let dom_availablity = dom_dialog.querySelector("#availablity");
+let dom_screen = dom_dialog.querySelector("#screen");
+let dom_cpu = dom_dialog.querySelector("#cpu");
+let dom_ram = dom_dialog.querySelector("#ram");
+let dom_storage = dom_dialog.querySelector("#storage");
+let dom_color = dom_dialog.querySelector("#color");
+let dom_inputImg = dom_dialog.querySelector("#inputImg");
+let dom_description = dom_dialog.querySelector("#description");
 
 // variables_____________________________________
+let check_input = [dom_title, dom_price, dom_availablity, dom_screen, dom_cpu, dom_ram, dom_storage, dom_color, dom_inputImg, dom_description]
 let getData = ""
 let products = []
 let id = 0;
@@ -33,22 +34,22 @@ function hide(elements) {
 //  LOCAL STORAGE ---------------------------------------------------------
 function saveProducts() {
     localStorage.setItem("products", JSON.stringify(products));
-  }
-  
-  function loadProducts() {
+}
+
+function loadProducts() {
     let productStorage = JSON.parse(localStorage.getItem("products"));
     if (productStorage !== null) {
         products = productStorage;
     }
-  }
+}
 
 // renderProduct function
-function renderProduct(){
+function renderProduct() {
     loadProducts()
     // remove table 
     dom_table.querySelector("tbody").remove();
     let tbody = document.createElement("tbody");
-    for (let i in products){
+    for (let i in products) {
         spot_product = products[i];
         let tr = document.createElement("tr");
         tr.dataset.index = i;
@@ -75,17 +76,17 @@ function renderProduct(){
 
         // add image to td eidt and delete
         let td_Edit_delete = document.createElement("td");
-         // image eidt
+        // image eidt
         let img_edit = document.createElement("img");
         img_edit.src = "../../../img/edit.svg"
         img_edit.style.cursor = "pointer";
         img_edit.addEventListener("click", edit)
-         // image delete
+        // image delete
         let img_delete = document.createElement("img");
         img_delete.src = "../../../img/trash.png"
         img_delete.style.cursor = "pointer";
         img_delete.addEventListener("click", takeAway)
-         // appendChild into td
+        // appendChild into td
         td_Edit_delete.appendChild(img_edit);
         td_Edit_delete.appendChild(img_delete);
         tr.appendChild(td_Edit_delete);
@@ -99,7 +100,7 @@ function renderProduct(){
 
 
 
-function onUpload(){
+function onUpload() {
     //  display dialog
     show(dom_dialog)
     // show bottun create
@@ -122,48 +123,78 @@ function onUpload(){
 }
 
 
-
-
-function onCreateOrUpdate(index , isCreate = true){
-    // hide dialog
-    hide(dom_dialog)
-    // create object
-    let product = {}
-
-    // take value from input
-    product.img = getData;
-    product.title = dom_title.value;
-    product.price = formatDollar(Number(dom_price.value));
-    product.availablity = dom_availablity.value;
-    product.screen = dom_screen.value;
-    product.cpu = dom_cpu.value;
-    product.ram = dom_ram.value;
-    product.storage = dom_storage.value;
-    product.color = dom_color.value;
-    product.description = dom_description.value;   
-    product.id = id
-
-
-
-    // push to Products list
-    if (isCreate){
-        products.push(product);
+function validateInput(element) {
+    let isEmpty = true;
+    if (!(element.value)) {
+        element.style.border = "2px solid red";
+        isEmpty = false;
     } else {
-        products[index] = product;
+        element.style.border = "2px solid green";
     }
-    localStorage.setItem("id", id);
-    // save Products
-    saveProducts();
-    // Update table
-    renderProduct();
-    
+    return isEmpty;
+};
+
+
+function onCreateOrUpdate(index, isCreate = true) {
+
+    // create object
+    let checkInput = true
+    for (let value of check_input) {
+        console.log(value)
+        checkInput = validateInput(value);
+        console.log(checkInput)
+    };
+    if (!(validateInput(dom_inputImg))) {
+        dom_inputImg.parentElement.parentElement.style.border = '2px solid red';
+    }
+    if (checkInput) {
+        // hide dialog
+        hide(dom_dialog)
+        let product = {}
+
+        // take value from input
+        product.img = getData;
+        product.title = dom_title.value;
+        product.price = formatDollar(Number(dom_price.value));
+        product.availablity = dom_availablity.value;
+        product.screen = dom_screen.value;
+        product.cpu = dom_cpu.value;
+        product.ram = dom_ram.value;
+        product.storage = dom_storage.value;
+        product.color = dom_color.value;
+        product.description = dom_description.value;
+        product.id = id
+
+
+
+        // push to Products list
+        if (isCreate) {
+            products.push(product);
+        } else {
+            products[index] = product;
+        }
+        localStorage.setItem("id", id);
+        // save Products
+        saveProducts();
+        // Update table
+        renderProduct();
+        for (let value of check_input) {
+            value.style.border = "1px solid gray";
+        };
+        dom_inputImg.parentElement.parentElement.style.border = '1px solid gray';
+
+    }
+
 }
 
 
-function edit(event){
+function edit(event) {
     //  Get index parent
     let index = event.target.parentElement.parentElement.dataset.index;
     // display dom_dialog
+    for (let i of check_input) {
+        i.style.border = "1px solid grey";
+    }
     show(dom_dialog);
     // show Button edit
     show(btn_edit);
@@ -179,7 +210,7 @@ function edit(event){
 
     // dom_inputImg.value = pre.img;
     dom_title.value = pre.title;
-    dom_price.value = pre.price.replace('$','');
+    dom_price.value = pre.price.replace('$', '');
     dom_availablity.value = pre.availablity;
     dom_screen.value = pre.screen;
     dom_cpu.value = pre.cpu;
@@ -187,8 +218,8 @@ function edit(event){
     dom_storage.value = pre.storage;
     dom_color.value = pre.color;
     dom_description.value = pre.description;
-    
-    if (products[index].id == id){
+
+    if (products[index].id == id) {
         id = products[index].id;
     }
 
@@ -196,7 +227,7 @@ function edit(event){
 
 
     // make Button edit call to onEdit
-    btn_edit.addEventListener("click", function(){
+    btn_edit.addEventListener("click", function () {
 
         onCreateOrUpdate(index, false);
         index = null;
@@ -204,7 +235,7 @@ function edit(event){
     })
 
 }
-function takeAway(event){
+function takeAway(event) {
     //  Get index parent
     let index = event.target.parentElement.parentElement.dataset.index;
 
@@ -219,17 +250,17 @@ function takeAway(event){
 
 function formatDollar(num) {
     var p = num.toFixed(2).split(".");
-    return '$'+p[0].split("").reverse().reduce(function(acc, num, i, orig) {
-        return num + (num != "-" && i && !(i % 3) ? "," : "") + acc;
+    return '$' + p[0].split("").reverse().reduce(function (acc, num, i, orig) {
+        return num + (num != "-" && i && !(i % 3) ? "" : "") + acc;
     }, "") + "." + p[1];
 }
 
 function encodeImageFileAsURL(element) {
     var file = element.files[0];
     var reader = new FileReader();
-    reader.onloadend = function() {
-      getData =  reader.result;
-    //   console.log(getData);
+    reader.onloadend = function () {
+        getData = reader.result;
+        //   console.log(getData);
     }
     reader.readAsDataURL(file);
 }
@@ -237,20 +268,20 @@ function encodeImageFileAsURL(element) {
 
 // Main_____________________________________ 
 let btn = dom_dialog.querySelectorAll("button");
-let btn_cancle =btn[0];
+let btn_cancle = btn[0];
 let btn_create = btn[1];
 let btn_edit = btn[2];
 
-btn_cancle.addEventListener("click", function(){
+btn_cancle.addEventListener("click", function () {
     hide(dom_dialog)
 })
 
-dom_inputImg.addEventListener("change", function(event){
+dom_inputImg.addEventListener("change", function (event) {
     encodeImageFileAsURL(this)
-    
+
 });
 
-btn_create.addEventListener("click", function(){
+btn_create.addEventListener("click", function () {
     onCreateOrUpdate(null);
 })
 
