@@ -4,13 +4,22 @@
 
 .pro-container{
     width: 100%;
+    height: 100%;;
     .header {
         margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
         .slideshow-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             max-width: 100%;
             position: relative;
-            margin: auto;
-            left: 18%;
+            
+            // margin: auto;
+            // left: 18%;
     
             .mySlides {
                 display: none;
@@ -27,6 +36,7 @@
             }
             img{
                 border-radius: 10px;
+                width: 1100px;
             }
             .numbertext {
                 color: #f2f2f2;
@@ -40,15 +50,17 @@
     .main-image{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         img{
             position: relative;
             border-radius: 10px;
+            width: 32%;
         }
     }
     .content-list{
         display: flex;
         margin: 30px;
+        height: 100%;
         aside{
             background-color: #01345B;
             border-radius: 10px;
@@ -90,10 +102,12 @@
         .right-side{
             // display: grid;
             width: 100%;
+
             main{
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
+                flex-wrap: wrap;
             }
             .bottom{
                 display: flex;

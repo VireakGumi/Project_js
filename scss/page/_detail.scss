@@ -71,91 +71,96 @@
             }
         }
     }
-    .box-dialog-chart{
-        position: fixed;
-        top: 65px;
-        left: 5px;
-        width: 30%;
 
-        dialog{
+}
+.box-dialog-buy{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.614);
+    z-index: 100;
+    dialog{ 
+        position: fixed;
+        top: 20%;
+        padding: 30px;
+        width: 35%;
+        border-radius: 10px;
+        .container{
             width: 100%;
-            border-radius: 10px;
-            header{
-                font-weight: bold;
-                font-size: larger;
-                margin-bottom: 10px;
-            }
-            .list-cart{
-                width: 100%;
-                .item{
+            form{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                input{
+                    @include input;
+                    margin: 5px 0px;
+                }
+                .billing{
                     display: flex;
-                    width: 100%;
-                    justify-content: space-around;
-                    align-items: center;
-                    border: 2px solid gray;
-                    border-radius: 10px;
-                    padding: 10px;
-                    margin-bottom: 5px;
-                    img{
-                        border-radius: 10px;
-                        width: 100px;
-                    }
-                    menu{
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        width: 44%;
-                        button{
-                            padding: 5px 10px;
-                        }
-                    }
+                    flex-direction: column;
+                    margin-top: -42px;
+                }
+                .payment{
+                    display: flex;
+                    flex-direction: column;
                 }
             }
-
         }
-
+        .btn{
+            display: flex;
+            justify-content: flex-end;
+            button{
+                padding: 5px 10px;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+        }
     }
-    .box-dialog-buy{
-        position: fixed;
+}
+.box-dialog-chart{
+    position: fixed;
+    top: 65px;
+    left: 5px;
+    width: 30%;
+
+    dialog{
         width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.614);
-        dialog{ 
-            position: fixed;
-            top: 20%;
-            padding: 30px;
-            width: 35%;
-            border-radius: 10px;
-            .container{
+        border-radius: 10px;
+        header{
+            font-weight: bold;
+            font-size: larger;
+            margin-bottom: 10px;
+        }
+        .list-cart{
+            width: 100%;
+            .item{
+                display: flex;
                 width: 100%;
-                form{
+                justify-content: space-around;
+                align-items: center;
+                border: 2px solid gray;
+                border-radius: 10px;
+                padding: 10px;
+                margin-bottom: 5px;
+                img{
+                    border-radius: 10px;
+                    width: 100px;
+                }
+                h4{
+                    margin: 0px 10px;
+                }
+                menu{
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    input{
-                        @include input;
-                        margin: 5px 0px;
+                    width: 44%;
+                    button{
+                        padding: 5px 10px;
                     }
-                    .billing{
-                        display: flex;
-                        flex-direction: column;
-                        margin-top: -42px;
-                    }
-                    .payment{
-                        display: flex;
-                        flex-direction: column;
-                    }
-                }
-            }
-            .btn{
-                display: flex;
-                justify-content: flex-end;
-                button{
-                    padding: 5px 10px;
-                    margin-left: 10px;
-                    margin-top: 10px;
                 }
             }
         }
+
     }
+
 }

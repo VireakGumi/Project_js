@@ -2,16 +2,30 @@
 // variables_____________________________________
 const dom_slides = document.querySelectorAll(".mySlides");
 let dom_search = document.querySelector(".search-input");
+let dom_cart = document.querySelector('.box-dialog-chart')
+let dom_buy = document.querySelector('.box-dialog-buy')
 
 // variables_____________________________________
 let slideIndex = 0;
 let products = []
+let cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 localStorage.setItem("index", JSON.stringify(null));
 
 
 
 
 // Function_____________________________________
+
+// show elements
+function show(elements) {
+  elements.style.display = "block";
+}
+// hide elements
+function hide(elements) {
+  elements.style.display = "none";
+}
+
+
 function showSlides() {
   let slides = document.getElementsByClassName("mySlides");
   for (let i = 0; i < slides.length; i++) {
@@ -87,13 +101,6 @@ function setData(event) {
   let index = event.currentTarget.dataset.index;;
   localStorage.setItem("index", Number(index));
 }
-// console.log(dom_slides[1])
-function createslide() {
-  for (let i = 0; i < dom_slides.length; i++) {
-    dom_slides[i].querySelector("img").src = products[i].img;
-    dom_slides[i].querySelector("img").style.width = "65%";
-  }
-}
 
 // search for products
 function searchBook(event) {
@@ -104,8 +111,6 @@ function searchBook(event) {
   for (let value of dom_main.children) {
     let title = value.querySelector('#title').textContent.toUpperCase();
     value.style.display = "none"
-    console.log(value);
-
     if (title == Textsearch || title.includes(Textsearch)) {
       value.style.display = "block"
     }
@@ -115,15 +120,73 @@ function searchBook(event) {
 
 };
 
+function showonWeb() {
+  cart = JSON.parse(localStorage.getItem("cart"));
+  
+  if (cart.length) {
+      show(dom_cart);
+      dom_cart.querySelector(".list-cart").remove();
+      let list = document.createElement('div');
+      list.className = "list-cart";
+      for (let n in cart) {
+          let item = document.createElement("div");
+          item.className = "item";
+          item.dataset.index = n;
+          let img_chart = document.createElement("img");
+          img_chart.src = cart[n].img_chart;
+          img_chart.style.width = "100px";
+          let h4 = document.createElement("h4");
+          h4.textContent = cart[n].title;
+          let price = document.createElement("p");
+          price.textContent = cart[n].price;
+          let menu = document.createElement("menu");
+          let btnRemove = document.createElement("button");
+          btnRemove.textContent = "Remove";
+          btnRemove.addEventListener("click", remove);
+          let btnBuy = document.createElement("button");
+          btnBuy.textContent = "Buy";
+          btnBuy.addEventListener("click", showBuydialog);
+          menu.appendChild(btnRemove);
+          menu.appendChild(btnBuy);
+          item.appendChild(img_chart);
+          item.appendChild(h4);
+          item.appendChild(price);
+          item.appendChild(menu);
+          list.appendChild(item);
+      }
+      dom_cart.querySelector('dialog').appendChild(list);
+
+
+  } else {
+      hide(dom_cart);
+  }
+}
+function hideBuy(){
+  hide(dom_buy);
+}
+
+function showBuydialog() {
+  show(dom_buy);
+}
+
+function remove(event) {
+  let i = event.target.parentElement.parentElement.dataset.index;
+  cart.splice(i, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  showonWeb();
+}
+
+
 // main________________________________
 
 
 
 dom_search.addEventListener('keyup', function (e) {
   searchBook(e);
-  console.log('hello')
 })
 
+
+
+showonWeb()
 renderCard();
 showSlides()
-createslide()

@@ -67,7 +67,6 @@ function renderCard() {
     for (let n in products) {
         let num = Math.floor(Math.random() * products.length) + 1;
         if (num != index && limit < 3) {
-            console.log('pro')
             let a = document.createElement('a');
             a.href = '../detailPage/detail.html'
             a.dataset.index = n
@@ -115,11 +114,11 @@ function addCart() {
     let chart = {
         title: product.title,
         img_chart: product.img,
+        price: product.price,
         id: product.id
     }
     let check = true;
     for (let i in cart) {
-        console.log(cart[i].id == product.id);
         if (cart[i].id == product.id) {
             check = false;
         }
@@ -148,6 +147,8 @@ function showonWeb() {
             img_chart.style.width = "100px";
             let h4 = document.createElement("h4");
             h4.textContent = cart[n].title;
+            let price = document.createElement("p");
+            price.textContent = cart[n].price;
             let menu = document.createElement("menu");
             let btnRemove = document.createElement("button");
             btnRemove.textContent = "Remove";
@@ -159,14 +160,11 @@ function showonWeb() {
             menu.appendChild(btnBuy);
             item.appendChild(img_chart);
             item.appendChild(h4);
+            item.appendChild(price);
             item.appendChild(menu);
             list.appendChild(item);
-            console.log(list)
         }
         dom_cart.querySelector('dialog').appendChild(list);
-        console.log(dom_cart)
-
-
     } else {
         hide(dom_cart);
     }
@@ -196,7 +194,6 @@ function setData(event) {
 
 // main________________________________
 renderCard();
-// console.log(products[index].img)
 let product = products[index];
 dom_title.style.backgroundImage = 'url(' + product.img + ')'
 let h1 = dom_title.querySelector('h1');
@@ -209,5 +206,3 @@ if (cart.length) {
 }
 generateDetails()
 showonWeb()
-// let ss = dom_cart.querySelector('.list-chart');
-// console.log(ss)

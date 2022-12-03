@@ -33,6 +33,9 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+button a {
+  text-decoration: none;
+}
 
 button:hover {
   background-color: #01345B;
@@ -229,15 +232,21 @@ body {
 
 .pro-container {
   width: 100%;
+  height: 100%;
 }
 .pro-container .header {
   margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 .pro-container .header .slideshow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
   position: relative;
-  margin: auto;
-  left: 18%;
 }
 .pro-container .header .slideshow-container .mySlides {
   display: none;
@@ -253,6 +262,7 @@ body {
 }
 .pro-container .header .slideshow-container img {
   border-radius: 10px;
+  width: 1100px;
 }
 .pro-container .header .slideshow-container .numbertext {
   color: #f2f2f2;
@@ -264,15 +274,17 @@ body {
 .pro-container .main-image {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .pro-container .main-image img {
   position: relative;
   border-radius: 10px;
+  width: 32%;
 }
 .pro-container .content-list {
   display: flex;
   margin: 30px;
+  height: 100%;
 }
 .pro-container .content-list aside {
   background-color: #01345B;
@@ -313,6 +325,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .pro-container .content-list .right-side .bottom {
   display: flex;
@@ -407,25 +420,73 @@ body {
   display: flex;
   justify-content: center;
 }
-.container-detail .box-dialog-chart {
+
+.box-dialog-buy {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.614);
+  z-index: 100;
+}
+.box-dialog-buy dialog {
+  position: fixed;
+  top: 20%;
+  padding: 30px;
+  width: 35%;
+  border-radius: 10px;
+}
+.box-dialog-buy dialog .container {
+  width: 100%;
+}
+.box-dialog-buy dialog .container form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box-dialog-buy dialog .container form input {
+  padding: 7px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+.box-dialog-buy dialog .container form .billing {
+  display: flex;
+  flex-direction: column;
+  margin-top: -42px;
+}
+.box-dialog-buy dialog .container form .payment {
+  display: flex;
+  flex-direction: column;
+}
+.box-dialog-buy dialog .btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.box-dialog-buy dialog .btn button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.box-dialog-chart {
   position: fixed;
   top: 65px;
   left: 5px;
   width: 30%;
 }
-.container-detail .box-dialog-chart dialog {
+.box-dialog-chart dialog {
   width: 100%;
   border-radius: 10px;
 }
-.container-detail .box-dialog-chart dialog header {
+.box-dialog-chart dialog header {
   font-weight: bold;
   font-size: larger;
   margin-bottom: 10px;
 }
-.container-detail .box-dialog-chart dialog .list-cart {
+.box-dialog-chart dialog .list-cart {
   width: 100%;
 }
-.container-detail .box-dialog-chart dialog .list-cart .item {
+.box-dialog-chart dialog .list-cart .item {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -435,63 +496,21 @@ body {
   padding: 10px;
   margin-bottom: 5px;
 }
-.container-detail .box-dialog-chart dialog .list-cart .item img {
+.box-dialog-chart dialog .list-cart .item img {
   border-radius: 10px;
   width: 100px;
 }
-.container-detail .box-dialog-chart dialog .list-cart .item menu {
+.box-dialog-chart dialog .list-cart .item h4 {
+  margin: 0px 10px;
+}
+.box-dialog-chart dialog .list-cart .item menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 44%;
 }
-.container-detail .box-dialog-chart dialog .list-cart .item menu button {
+.box-dialog-chart dialog .list-cart .item menu button {
   padding: 5px 10px;
-}
-.container-detail .box-dialog-buy {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.614);
-}
-.container-detail .box-dialog-buy dialog {
-  position: fixed;
-  top: 20%;
-  padding: 30px;
-  width: 35%;
-  border-radius: 10px;
-}
-.container-detail .box-dialog-buy dialog .container {
-  width: 100%;
-}
-.container-detail .box-dialog-buy dialog .container form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.container-detail .box-dialog-buy dialog .container form input {
-  padding: 7px;
-  width: 100%;
-  border-radius: 5px;
-  margin: 5px 0px;
-}
-.container-detail .box-dialog-buy dialog .container form .billing {
-  display: flex;
-  flex-direction: column;
-  margin-top: -42px;
-}
-.container-detail .box-dialog-buy dialog .container form .payment {
-  display: flex;
-  flex-direction: column;
-}
-.container-detail .box-dialog-buy dialog .btn {
-  display: flex;
-  justify-content: flex-end;
-}
-.container-detail .box-dialog-buy dialog .btn button {
-  padding: 5px 10px;
-  margin-left: 10px;
-  margin-top: 10px;
 }
 
 .container-upload {
