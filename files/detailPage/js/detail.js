@@ -1,20 +1,22 @@
 
 // variables_____________________________________
-let  span_price = document.querySelector('#price');
-let  span_availablity = document.querySelector('#availablity');
-let  span_screen = document.querySelector('#screen');
-let  span_color = document.querySelector('#color');
-let  span_cpu = document.querySelector('#cpu');
-let  span_ram = document.querySelector('#ram');
-let  span_store = document.querySelector('#store');
-let  span_description = document.querySelector('#description');
-let  brand = document.querySelector('#brand');
-let  dom_title = document.querySelector(".title");
+let span_price = document.querySelector('#price');
+let span_availablity = document.querySelector('#availablity');
+let span_screen = document.querySelector('#screen');
+let span_color = document.querySelector('#color');
+let span_cpu = document.querySelector('#cpu');
+let span_ram = document.querySelector('#ram');
+let span_store = document.querySelector('#store');
+let span_description = document.querySelector('#description');
+let brand = document.querySelector('#brand');
+let dom_title = document.querySelector(".title");
 let dom_image = document.querySelector("#image");
 let dom_cart = document.querySelector(".box-dialog-chart");
+let dom_buy = document.querySelector(".box-dialog-buy");
 
 let products = [];
-let cart = []
+let cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+// localStorage.setItem("cart", JSON.stringify(cart));
 let index = Number(localStorage.getItem("index"));
 // Function_____________________________________
 
@@ -39,7 +41,7 @@ function loadProduct() {
         products = productStorage;
     }
 }
-function generateDetails(){
+function generateDetails() {
     brand.textContent = product.title
     span_price.textContent = product.price;
     span_availablity.textContent = product.availablity;
@@ -109,20 +111,30 @@ function renderCard() {
     document.querySelector("main").appendChild(list);
 }
 
-function addCart(){
+function addCart() {
     let chart = {
         title: product.title,
         img_chart: product.img,
         id: product.id
     }
-    cart.push(chart);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    showonWeb();
+    let check = true;
+    for (let i in cart) {
+        console.log(cart[i].id == product.id);
+        if (cart[i].id == product.id) {
+            check = false;
+        }
+    }
+    if (check) {
+        cart.push(chart);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showonWeb();
+    }
 }
 
-function showonWeb(){
+function showonWeb() {
     cart = JSON.parse(localStorage.getItem("cart"));
-    if(cart.length){
+    
+    if (cart.length) {
         show(dom_cart);
         dom_cart.querySelector(".list-cart").remove();
         let list = document.createElement('div');
@@ -130,6 +142,7 @@ function showonWeb(){
         for (let n in cart) {
             let item = document.createElement("div");
             item.className = "item";
+            item.dataset.index = n;
             let img_chart = document.createElement("img");
             img_chart.src = cart[n].img_chart;
             img_chart.style.width = "100px";
@@ -138,10 +151,10 @@ function showonWeb(){
             let menu = document.createElement("menu");
             let btnRemove = document.createElement("button");
             btnRemove.textContent = "Remove";
-            // btnRemove.addEventListener("click", remove);
-            let btnBuy  = document.createElement("button");
+            btnRemove.addEventListener("click", remove);
+            let btnBuy = document.createElement("button");
             btnBuy.textContent = "Buy";
-            // btnBuy.addEventListener("click", buy);
+            btnBuy.addEventListener("click", showBuydialog);
             menu.appendChild(btnRemove);
             menu.appendChild(btnBuy);
             item.appendChild(img_chart);
@@ -150,34 +163,51 @@ function showonWeb(){
             list.appendChild(item);
             console.log(list)
         }
-        dom_cart.appendChild(list);
+        dom_cart.querySelector('dialog').appendChild(list);
         console.log(dom_cart)
 
 
-
-        
-    }else{
+    } else {
         hide(dom_cart);
     }
 }
+function hideBuy(){
+    hide(dom_buy);
+}
+
+function showBuydialog() {
+    show(dom_buy);
+}
+
+function remove(event) {
+    let i = event.target.parentElement.parentElement.dataset.index;
+    cart.splice(i, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showonWeb();
+}
+
 
 function setData(event) {
     let index = event.currentTarget.dataset.index;;
     localStorage.setItem("index", Number(index));
-  
-  
-  }
+
+
+}
 
 // main________________________________
 renderCard();
 // console.log(products[index].img)
 let product = products[index];
-dom_title.style.backgroundImage = 'url('+product.img+')'
+dom_title.style.backgroundImage = 'url(' + product.img + ')'
 let h1 = dom_title.querySelector('h1');
 h1.textContent = product.title;
-if (cart == []){
+if (cart.length) {
+    show(dom_cart);
+}else{
     hide(dom_cart);
+
 }
 generateDetails()
+showonWeb()
 // let ss = dom_cart.querySelector('.list-chart');
 // console.log(ss)

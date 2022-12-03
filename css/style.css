@@ -307,7 +307,6 @@ body {
   list-style: none;
 }
 .pro-container .content-list .right-side {
-  display: grid;
   width: 100%;
 }
 .pro-container .content-list .right-side main {
@@ -423,10 +422,10 @@ body {
   font-size: larger;
   margin-bottom: 10px;
 }
-.container-detail .box-dialog-chart dialog .list-chart {
+.container-detail .box-dialog-chart dialog .list-cart {
   width: 100%;
 }
-.container-detail .box-dialog-chart dialog .list-chart .item {
+.container-detail .box-dialog-chart dialog .list-cart .item {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -436,17 +435,17 @@ body {
   padding: 10px;
   margin-bottom: 5px;
 }
-.container-detail .box-dialog-chart dialog .list-chart .item img {
+.container-detail .box-dialog-chart dialog .list-cart .item img {
   border-radius: 10px;
   width: 100px;
 }
-.container-detail .box-dialog-chart dialog .list-chart .item menu {
+.container-detail .box-dialog-chart dialog .list-cart .item menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 44%;
 }
-.container-detail .box-dialog-chart dialog .list-chart .item menu button {
+.container-detail .box-dialog-chart dialog .list-cart .item menu button {
   padding: 5px 10px;
 }
 .container-detail .box-dialog-buy {

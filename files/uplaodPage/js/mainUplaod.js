@@ -18,6 +18,7 @@ const dom_description = dom_dialog.querySelector("#description");
 let getData = ""
 let products = []
 let id = 0;
+// localStorage.setItem("id", id)
 // Function_____________________________________
 
 // show elements
@@ -117,9 +118,7 @@ function onUpload(){
     dom_color.value = "";
     dom_description.value = "";
     // call function onCrate
-
-
-
+    id = Number(localStorage.getItem("id")) + 1;
 }
 
 
@@ -152,6 +151,7 @@ function onCreateOrUpdate(index , isCreate = true){
     } else {
         products[index] = product;
     }
+    localStorage.setItem("id", id);
     // save Products
     saveProducts();
     // Update table
@@ -190,8 +190,6 @@ function edit(event){
     
     if (products[index].id == id){
         id = products[index].id;
-    }else{
-        id++;
     }
 
     // call function onCrate
