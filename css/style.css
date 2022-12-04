@@ -35,13 +35,15 @@ button {
 }
 button a {
   text-decoration: none;
-  color: white;
 }
 
 button:hover {
   background-color: #01345B;
   color: white;
   border: 2px solid white;
+}
+button:hover a {
+  color: white;
 }
 
 .footer {

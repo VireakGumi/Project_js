@@ -7,11 +7,13 @@ button{
     cursor: pointer;
     a{
         text-decoration: none;
-        color: white;
     }
 }
 button:hover{
-        background-color: #01345B;
-        color: white ;
-        border: 2px solid white;
+    background-color: #01345B;
+    color: white ;
+    border: 2px solid white;
+    a{
+        color: white;
+    }
 }
