@@ -33,11 +33,18 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+button a {
+  text-decoration: none;
+  color: #01345B;
+}
 
 button:hover {
   background-color: #01345B;
   color: white;
   border: 2px solid white;
+}
+button:hover a {
+  color: white;
 }
 
 .footer {
@@ -90,24 +97,36 @@ button:hover {
 
 .list-1 {
   display: flex;
+  margin-top: -10px;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  height: 100%;
+}
+.list-1 a {
+  text-decoration: none;
+  height: 40%;
 }
 .list-1 .card {
   background-color: hsl(206deg, 98%, 18%);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
   padding: 15px;
   border-radius: 10px;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+  margin: 15px;
 }
 .list-1 .card img {
   border-radius: 10px;
 }
+.list-1 .card .text-card {
+  width: 100%;
+}
 .list-1 .card .text-card .sub-text {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 .list-1 .card:hover {
-  transform: translate(-10px, -10px);
+  transform: translate(-5px, -5px);
 }
 
 body {
@@ -212,6 +231,294 @@ body {
   margin: 20% 7% 30% auto;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.pro-container {
+  width: 100%;
+  height: 100%;
+}
+.pro-container .header {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.pro-container .header .slideshow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  position: relative;
+}
+.pro-container .header .slideshow-container .mySlides {
+  display: none;
+}
+.pro-container .header .slideshow-container .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.pro-container .header .slideshow-container img {
+  border-radius: 10px;
+  width: 1100px;
+}
+.pro-container .header .slideshow-container .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.pro-container .main-image {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.pro-container .main-image img {
+  position: relative;
+  border-radius: 10px;
+  width: 32%;
+}
+.pro-container .content-list {
+  display: flex;
+  margin: 30px;
+  height: 100%;
+}
+.pro-container .content-list aside {
+  background-color: #01345B;
+  border-radius: 10px;
+  color: white;
+  width: 300px;
+  padding: 10px;
+}
+.pro-container .content-list aside h3 {
+  text-align: center;
+}
+.pro-container .content-list aside .search {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.pro-container .content-list aside .search input {
+  padding: 7px;
+  width: 100%;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+.pro-container .content-list aside .search i {
+  color: black;
+}
+.pro-container .content-list aside .search .type li, .pro-container .content-list aside .search .brand li {
+  list-style: none;
+}
+.pro-container .content-list .right-side {
+  width: 100%;
+}
+.pro-container .content-list .right-side main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.pro-container .content-list .right-side .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pro-container .content-list .right-side .bottom ul {
+  display: flex;
+}
+.pro-container .content-list .right-side .bottom ul li {
+  list-style: none;
+  margin: 10px;
+  font-size: large;
+  padding: 5px;
+}
+.pro-container .content-list .right-side .bottom ul li:hover {
+  cursor: pointer;
+  background-color: rgba(1, 52, 91, 0.5215686275);
+  color: white;
+  border-radius: 10px;
+}
+.pro-container .content-list .right-side .bottom button {
+  padding: 0px;
+}
+
+.container-detail {
+  width: 100%;
+}
+.container-detail .title {
+  display: flex;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+}
+.container-detail .title h1 {
+  color: white;
+}
+.container-detail .info-detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 30px 0px;
+}
+.container-detail .info-detail .info {
+  display: flex;
+  flex-direction: column;
+}
+.container-detail .info-detail .info .sub-info {
+  display: flex;
+}
+.container-detail .info-detail .info .sub-info #image {
+  background-color: rgba(128, 128, 128, 0.438);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  margin: 10px 30px 10px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container-detail .info-detail .info .sub-info #image img {
+  width: 100%;
+}
+.container-detail .info-detail p {
+  font-weight: bold;
+}
+.container-detail .info-detail p span {
+  font-weight: normal;
+  margin-left: 10px;
+}
+.container-detail .info-detail menu {
+  display: flex;
+  justify-content: flex-end;
+}
+.container-detail .info-detail menu button {
+  margin-left: 30px;
+  padding: 7px 20px;
+}
+.container-detail .info-detail .other {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-detail .info-detail .other main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.box-dialog-buy {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.614);
+  z-index: 100;
+}
+.box-dialog-buy dialog {
+  position: fixed;
+  top: 20%;
+  padding: 30px;
+  width: 35%;
+  border-radius: 10px;
+}
+.box-dialog-buy dialog .container {
+  width: 100%;
+}
+.box-dialog-buy dialog .container form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box-dialog-buy dialog .container form input {
+  padding: 7px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+.box-dialog-buy dialog .container form .billing {
+  display: flex;
+  flex-direction: column;
+  margin-top: -42px;
+}
+.box-dialog-buy dialog .container form .payment {
+  display: flex;
+  flex-direction: column;
+}
+.box-dialog-buy dialog .btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.box-dialog-buy dialog .btn button {
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.box-dialog-chart {
+  position: fixed;
+  top: 65px;
+  left: 5px;
+  width: 30%;
+}
+.box-dialog-chart dialog {
+  width: 100%;
+  border-radius: 10px;
+}
+.box-dialog-chart dialog header {
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 10px;
+}
+.box-dialog-chart dialog .list-cart {
+  width: 100%;
+}
+.box-dialog-chart dialog .list-cart .item {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.box-dialog-chart dialog .list-cart .item img {
+  border-radius: 10px;
+  width: 100px;
+}
+.box-dialog-chart dialog .list-cart .item h4 {
+  margin: 0px 10px;
+}
+.box-dialog-chart dialog .list-cart .item menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 44%;
+}
+.box-dialog-chart dialog .list-cart .item menu button {
+  padding: 5px 10px;
+}
+
 .container-upload {
   width: 100%;
   height: 100vh;
@@ -241,6 +548,11 @@ body {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
+  padding: 0px 35px;
+}
+.container-upload .contain table img {
+  width: 25px;
+  margin: 0px 5px;
 }
 .container-upload .content-dialog {
   position: fixed;
@@ -267,37 +579,57 @@ body {
   font-weight: bold;
   font-size: 25px;
 }
-.container-upload .content-dialog input {
+.container-upload .content-dialog form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-upload .content-dialog form input {
   padding: 7px;
   width: 100%;
   border-radius: 5px;
   width: 80%;
 }
-.container-upload .content-dialog .data {
+.container-upload .content-dialog form .data {
   display: flex;
 }
-.container-upload .content-dialog .data section {
+.container-upload .content-dialog form .data section {
   display: flex;
   flex-direction: column;
 }
-.container-upload .content-dialog .data section select {
+.container-upload .content-dialog form .data section select {
   padding: 7px;
   width: 100%;
   border-radius: 5px;
   width: 90%;
   padding: 8px;
 }
-.container-upload .content-dialog .data section textarea {
+.container-upload .content-dialog form .data section textarea {
   width: 545px;
   height: 195px;
   resize: none;
   border-radius: 5px;
 }
+.container-upload .content-dialog form .img {
+  text-align: center;
+  padding: 3%;
+  border: thin solid black;
+  margin-top: 10px;
+  width: 93%;
+  border-radius: 5px;
+}
+.container-upload .content-dialog form .img #image {
+  cursor: pointer;
+}
+.container-upload .content-dialog form .img input[type=file] {
+  display: none;
+}
 .container-upload .content-dialog menu {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-left: -50px;
+  margin-left: -45px;
 }
 .container-upload .content-dialog menu button {
   margin-left: 30px;

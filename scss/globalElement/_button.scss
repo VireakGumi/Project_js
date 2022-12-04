@@ -5,10 +5,17 @@ button{
     padding: 10px 15px;
     border-radius: 10px;
     cursor: pointer;
+    a{
+        text-decoration: none;
+        color: #01345B;
 
+    }
 }
 button:hover{
-        background-color: #01345B;
-        color: white ;
-        border: 2px solid white;
+    background-color: #01345B;
+    color: white ;
+    border: 2px solid white;
+    a{
+        color: white;
+    }
 }

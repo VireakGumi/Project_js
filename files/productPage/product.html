@@ -11,7 +11,62 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="pro-container">
+        <div class="box-dialog-buy" style="display: none;">
+            <dialog open>
+                <!-- <header>Buy</header> -->
+                <div class="container">
+                    <form>
+                        <div class="billing">
+                            <h3>Billing Address</h3>
+                            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                            <input type="text" id="email" name="email" placeholder="john@example.com">
+                            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="city" placeholder="New York">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="NY">
+                        </div>
+
+                        <div class="payment">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+                            <div class="year-number">
+                                <div>
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="expyear" name="expyear" placeholder="2018">
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="352">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="btn">
+                    <button onclick="hideBuy()">Back</button>
+                    <button>Buy</button>
+
+                </div>
+            </dialog>
+        </div>
         <nav>
             <div class="navbar-left">
                 <a href="../../index.html">Home</a>
@@ -24,17 +79,53 @@
                 <a href="../uplaodPage/upload.html">Upload</a>
             </div>
         </nav>
+
         <div class="header">
-            <button><i class="material-icons">arrow_right_alt</i></button>
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="../../img/asus-rog-strix-scar-17.jpg">
+                    <div class="text">Caption Text</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg">
+                    <div class="text">Caption Two</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="../../img/msi_raider_ge_76_gaming_laptop_website_1641393146763.jpg">
+                    <div class="text">Caption Three</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="../../img/GfinEMFXnT42BFxAcDc2rA.jpg">
+                    <div class="text">Caption Three</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 5</div>
+                    <img src="../../img/lenovolegion5pro-1658155480534.jpg">
+                    <div class="text">Caption Three</div>
+                </div>
+
+            </div>
+            <br>
         </div>
         <div class="main-image">
-            <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt="" width="500px">
-            <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt="" width="500px">
-            <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt="" width="500px">
+            <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt="" >
+            <img src="../../img/msi_raider_ge_76_gaming_laptop_website_1641393146763.jpg" alt="" >
+            <img src="../../img/lenovolegion5pro-1658155480534.jpg" alt="" >
         </div>
         <div class="content-list">
             <aside>
-                <h4>Menu bar</h4>
+                <h3>Menu bar</h3>
                 <div class="search">
                     <input type="text" class="search-input" placeholder="Search for a product">
                     <i class="material-icons">search</i>
@@ -62,143 +153,20 @@
                     <li>MSI</li>
                 </ul>
             </aside>
-            <main>
-                <div class="list-1">
-                    <a href="../detailPage/detail.html">
-                        <div class="card">
-                            <div class="sub-card">
-                                <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt=""
-                                    width="300px">
-                            </div>
-                            <div class="text-card">
-                                <p>ASUS</p>
-                                <div class="sub-text">
-                                    <img src="../../img/star.png" alt="" width="100px">
-                                    <p>$900</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="../detailPage/detail.html">
-                        <div class="card">
-                            <div class="sub-card">
-                                <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt=""
-                                    width="300px">
-                            </div>
-                            <div class="text-card">
-                                <p>ASUS</p>
-                                <div class="sub-text">
-                                    <img src="../../img/star.png" alt="" width="100px">
-                                    <p>$900</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="../detailPage/detail.html">
-                        <div class="card">
-                            <div class="sub-card">
-                                <img src="../../img/asus_laptops_2022_asus_zephyrus_duo_16-1024x538.jpg" alt=""
-                                    width="300px">
-                            </div>
-                            <div class="text-card">
-                                <p>ASUS</p>
-                                <div class="sub-text">
-                                    <img src="../../img/star.png" alt="" width="100px">
-                                    <p>$900</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+            <div class="right-side"> 
+                <main></main>
+                <div class="bottom">
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                    </ul>
+                    <button><i class="material-icons">navigate_next</i></button>
+                    <!-- <button><i class="material-icons">double_arrow</i></button> -->
                 </div>
-                <!-- <div class="list-2">
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-3">
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="sub-card">
-                            <img src="#####" alt="">
-                        </div>
-                        <div class="text-card">
-                            <p>ASUS</p>
-                            <div class="sub-text">
-                                <p></p>
-                                <p>$900</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-            </main>
-            <div class="bottom">
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                </ul>
-                <button><i class="material-icons">search</i></button>
-                <button><i class="material-icons">search</i></button>
             </div>
         </div>
         <div class="footer">
@@ -234,6 +202,13 @@
 
         </div>
     </div>
+    <div class="box-dialog-chart">
+        <dialog open>
+            <header>To buy</header>
+            <div class="list-cart"></div>
+        </dialog>
+    </div>
 </body>
+<script src="js/mainProduct.js"></script>
 
 </html>
