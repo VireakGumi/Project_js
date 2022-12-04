@@ -3,6 +3,7 @@
     margin-top: -10px;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    height: 100%;
 
     a{
         text-decoration: none;
@@ -10,28 +11,24 @@
     }
     .card{
         background-color: hsl(206, 98%, 18%);
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
         padding: 15px;
         border-radius: 10px;
         color: white;
-        margin: 20px;
-
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+        margin-bottom: 30px;
         img{
             border-radius: 10px;
         }
         .text-card{
             width: 100%;
             .sub-text{
-                // height: 75%;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                // align-items: flex-end;
             }
         }
         &:hover{
             transform: translate(-5px , -5px);
-
         }
     }
 }
