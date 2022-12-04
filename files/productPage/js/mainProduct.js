@@ -10,6 +10,8 @@ let slideIndex = 0;
 let products = []
 let cart = JSON.parse(localStorage.getItem("cart")) ?? [];
 localStorage.setItem("index", JSON.stringify(null));
+localStorage.setItem("cart", JSON.stringify(cart));
+
 
 
 
